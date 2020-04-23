@@ -55,12 +55,12 @@ __FBSDID("$FreeBSD$");
 #include <dialog.h>
 #endif
 
-#define	_PATH_ZONETAB		"/usr/share/zoneinfo/zone1970.tab"
-#define	_PATH_ISO3166		"/usr/share/misc/iso3166"
-#define	_PATH_ZONEINFO		"/usr/share/zoneinfo"
-#define	_PATH_LOCALTIME		"/etc/localtime"
-#define	_PATH_DB		"/var/db/zoneinfo"
-#define	_PATH_WALL_CMOS_CLOCK	"/etc/wall_cmos_clock"
+#define	_PATH_ZONETAB		"/usr/share/zoneinfo/zone1970.tab" //
+#define	_PATH_ISO3166		"/usr/share/misc/iso3166"//
+#define	_PATH_ZONEINFO		"/usr/share/zoneinfo"//
+#define	_PATH_LOCALTIME		"/etc/localtime"//
+#define	_PATH_DB		"/var/db/zoneinfo"//
+#define	_PATH_WALL_CMOS_CLOCK	"/etc/wall_cmos_clock"//
 
 #ifdef PATH_MAX
 #define	SILLY_BUFFER_SIZE	2*PATH_MAX
@@ -90,7 +90,7 @@ static int	install_zoneinfo_file(const char *zoneinfo_file);
 
 #ifdef HAVE_DIALOG
 /* for use in describing more exotic behaviors */
-typedef struct dialogMenuItem {
+typedef struct dialogMenuItem {//
 	char *prompt;
 	char *title;
 	int (*fire)(struct dialogMenuItem *self);
@@ -214,7 +214,7 @@ static int	set_zone_whole_country(dialogMenuItem *);
 static int	set_zone_menu(dialogMenuItem *);
 static int	set_zone_utc(void);
 
-struct continent {
+struct continent {//
 	dialogMenuItem *menu;
 	int		nitems;
 };
@@ -306,7 +306,7 @@ find_continent(const char *name)
 	return (0);
 }
 
-struct country {
+struct country {//
 	char		*name;
 	char		*tlc;
 	int		nzones;
@@ -316,7 +316,7 @@ struct country {
 	dialogMenuItem	*submenu;	/* use iff nzones > 0 */
 };
 
-struct zone {
+struct zone {//
 	TAILQ_ENTRY(zone) link;
 	char		*descr;
 	char		*filename;
@@ -328,10 +328,10 @@ struct zone {
  * of the two-letter variety, so we just size this array to suit.
  * Beats worrying about dynamic allocation.
  */
-#define	NCOUNTRIES	(26 * 26)
-static struct country countries[NCOUNTRIES];
+#define	NCOUNTRIES	(26 * 26)// use map instead
+static struct country countries[NCOUNTRIES];//
 
-#define	CODE2INT(s)	((s[0] - 'A') * 26 + (s[1] - 'A'))
+#define	CODE2INT(s)	((s[0] - 'A') * 26 + (s[1] - 'A'))//
 
 /*
  * Read the ISO 3166 country code database in _PATH_ISO3166
@@ -894,7 +894,7 @@ install_zoneinfo(const char *zoneinfo)
 }
 
 static void
-usage(void)
+usage(void)//
 {
 
 	fprintf(stderr, "usage: tzsetup [-nrs] [-C chroot_directory]"
