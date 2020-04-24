@@ -338,7 +338,7 @@ static struct country countries[NCOUNTRIES];//
  * (/usr/share/misc/iso3166).  On error, exit via err(3).
  */
 static void
-read_iso3166_table(void)
+read_iso3166_table(void)//
 {
 	FILE		*fp;
 	struct country	*cp;
